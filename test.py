@@ -19,7 +19,7 @@ gradientsize = 9
 Qangle = 24
 Qstrength = 3
 Qcoherence = 3
-trainpath = 'test'
+trainpath = 'tools/raisr/test'
 
 # Calculate the margin
 maxblocksize = max(patchsize, gradientsize)
@@ -104,7 +104,7 @@ for image in imagelist:
     result[:,:,2] = bilinearinterp(widthgridHR, heightgridHR)
     result[margin:heightHR-margin,margin:widthHR-margin,0] = predictHR
     result = cv2.cvtColor(np.uint8(result), cv2.COLOR_YCrCb2RGB)
-    cv2.imwrite('results/' + os.path.splitext(os.path.basename(image))[0] + '_result.bmp', cv2.cvtColor(result, cv2.COLOR_RGB2BGR))
+    cv2.imwrite('tools/raisr/results/' + os.path.splitext(os.path.basename(image))[0] + '_result.ppm', cv2.cvtColor(result, cv2.COLOR_RGB2BGR))
     imagecount += 1
     # Visualizing the process of RAISR image upscaling
     if args.plot:
